@@ -1,16 +1,3 @@
-# my-virtual-trader-front-end
-Front-end virtual trading app, for 301d91 final project.
-
-## Collaborators
-Cody De La Torre, Tracy Oakley, Todd Wolden, Devon Terry
-
-## Domain Modeling
-
-![DomainImage1](https://user-images.githubusercontent.com/113792883/204928336-b90891b7-ed45-46c1-8274-163fc44d1a9d.png)
-
-![DomainImage2](https://user-images.githubusercontent.com/113792883/204928356-569623bf-f7aa-4d0e-9ad9-c6b0ea94d2d5.png)
-
-
 ### Software Requirements
 
 What is the vision of this product?
