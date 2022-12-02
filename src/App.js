@@ -2,12 +2,35 @@ import React from 'react';
 import axios from 'axios';
 import AssetCards from './Components/AssetCards';
 import './App.css';
+import { withAuth0 } from '@auth0/auth0-react';
+import LoginButton from './Components/LoginButton.js';
+import LogoutButton from './Components/LogoutButton.js';
+import Profile from './Components/Profile.js';
+import Header from './Components/Header.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 let SERVER = process.env.REACT_APP_SERVER;
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
+
+
+  }
+  render() {
+    return (
+      <>
+      <Header id="header" />
+        
+          {this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />}
+          {this.props.auth0.isAuthenticated ? <Profile /> : <h3>Please Log In</h3>}
+      
+        Hello World
+
+      </>
+    );
+
     this.state={
       isBuyOrSellModalShown:false,
       isPortfolioModalShown:false,
@@ -86,7 +109,8 @@ componentDidMount() {
     <p>Hello World</p>
     </>
   );
+
   }
 }
 
-export default App;
+export default withAuth0(App);
