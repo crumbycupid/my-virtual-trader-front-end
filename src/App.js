@@ -15,10 +15,8 @@ let SERVER = process.env.REACT_APP_SERVER;
 class App extends React.Component {
   constructor(props) {
     super(props);
-<<<<<<< HEAD
-    this.state = {
-      isModalShown: false
-    }
+
+
   }
   render() {
     return (
@@ -32,7 +30,7 @@ class App extends React.Component {
 
       </>
     );
-=======
+
     this.state={
       isBuyOrSellModalShown:false,
       isPortfolioModalShown:false,
@@ -111,7 +109,7 @@ componentDidMount() {
     <p>Hello World</p>
     </>
   );
->>>>>>> working
+
   }
 }
 
