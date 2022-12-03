@@ -86,7 +86,7 @@ class App extends React.Component {
 
       if (results.data.length === 0) {
         console.log('HERE!')
-        this.createUser({name: this.props.auth0.user.name, email: this.props.auth0.user.email, portfolio: newUserPortfolio});
+        this.createUser({name: this.props.auth0.user.name, email: this.props.auth0.user.email, portfolio: newUserPortfolio, balance: 10000});
         results = await axios.get(`${SERVER}/user?${this.props.auth0.user.email}`);
       }
       this.setState({
@@ -100,7 +100,7 @@ class App extends React.Component {
 
 
   createUser = async (aUser) => {
-    console.log('HERE!')
+    console.log('created a user')
     try {
       let userThatWasAdded = await axios.post(`${SERVER}/user`, aUser);
       console.log(userThatWasAdded);
@@ -144,7 +144,7 @@ class App extends React.Component {
             <div className="bg-light border ms-2">
               <Button variant="outline-dark" 
                 onClick={this.handlePortfolioModal}
-                >Current Balance is 10K
+                >Current Balance is {this.state.userData.balance}
               </Button>
             </div>
             
@@ -153,7 +153,7 @@ class App extends React.Component {
       //Tabs(for adding new asset) hard code the 15 to 20
       // Current balance(button) pass user's portfolio
     //<div flexbox> */}
-        {this.state.userDataIsAvailable &&
+        {this.state.userDataIsAvailable && this.props.auth0.isAuthenticated &&
           <AssetCards
             portfolio={this.state.userData.portfolio}
           // handleBuyOrSellModal = {this.showBuyOrSellModal}
