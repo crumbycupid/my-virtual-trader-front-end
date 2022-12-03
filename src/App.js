@@ -19,7 +19,8 @@ class App extends React.Component {
       isBuyOrSellModalShown: false,
       isPortfolioModalShown: false,
       userData: {},
-      userDataIsAvailable: false
+      userDataIsAvailable: false,
+      gotUserData: false
     }
   }
 
@@ -50,29 +51,52 @@ class App extends React.Component {
 
   getUser = async () => {
     try {
-      let results = await axios.get(`${SERVER}/user`);
+      this.setState({
+        gotUserData: true
+      });
+      console.log(this.props.auth0.user.email);
+      let results = await axios.get(`${SERVER}/user?email=${this.props.auth0.user.email}`);
+      console.log(results);
+
+      if (results.data.length === 0) {
+        console.log('HERE!')
+        this.createUser({name: this.props.auth0.user.name, email: this.props.auth0.user.email, portfolio: []});
+        results = await axios.get(`${SERVER}/user?${this.props.auth0.user.email}`);
+      }
       this.setState({
         userData: results.data[0],
         userDataIsAvailable: true
       });
     } catch (error) {
-      console.log('we have an error: ', error.response.data);
+      console.log('we have an error: ', error);
     }
   }
 
-  componentDidMount() {
-    this.getUser();
+
+  createUser = async (aUser) => {
+    console.log('HERE!')
+    try {
+      let userThatWasAdded = await axios.post(`${SERVER}/user`, aUser);
+      console.log(userThatWasAdded);
+
+    } catch (error){
+      console.log('we have an error creating a user');
+    }
+
   }
+
+  // componentDidMount() {
+  //  this.getUser();
+  // }
 
 
   render() {
 
     //console.log(this.state.userData);
-    if (this.state.userData.portfolio) {
-      console.log(this.state.userData.portfolio);
-    }
-
-
+    // if (this.state.userData.portfolio) {
+    //   console.log(this.state.userData.portfolio);
+    // }
+    if(this.props.auth0.isAuthenticated && !this.state.gotUserData){this.getUser();}
     return (
       <>
         <Header id="header" />
@@ -83,13 +107,13 @@ class App extends React.Component {
       //Tabs(for adding new asset) hard code the 15 to 20
       // Current balance(button) pass user's portfolio
     //<div flexbox> */}
-        {this.state.userDataIsAvailable &&
+        {/* {this.state.userDataIsAvailable &&
           <AssetCards
             portfolio={this.state.userData.portfolio}
           // handleBuyOrSellModal = {this.showBuyOrSellModal}
           />
 
-        }
+        } */}
 
 
         <p>Hello World</p>
