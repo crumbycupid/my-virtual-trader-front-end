@@ -124,30 +124,18 @@ class App extends React.Component {
   }
 
   handleOpenPortfolioModal = () => {
-    console.log('Show the Portfolio Modal')
     this.setState({
       isPortfolioModalShown: true
     });
   }
 
   handleClosePortfolioModal = () => {
-    console.log('Close the Portfolio Modal')
     this.setState({
       isPortfolioModalShown: false
     });
   }
 
-  // componentDidMount() {
-  //  this.getUser();
-  // }
-
-
   render() {
-
-    //console.log(this.state.userData);
-    // if (this.state.userData.portfolio) {
-    //   console.log(this.state.userData.portfolio);
-    // }
     if (this.props.auth0.isAuthenticated && !this.state.gotUserData) { this.getUser(); }
     return (
       <>
