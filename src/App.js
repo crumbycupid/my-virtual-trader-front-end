@@ -45,6 +45,10 @@ let newUserPortfolio = [
   }
 ]
 
+let tickerArray = [
+  "TSLA","GOOG","AAPL","AMZN", "XOM", "MSFT","NVDA", "UNH"
+];
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -52,6 +56,7 @@ class App extends React.Component {
       isBuyOrSellModalShown: false,
       isPortfolioModalShown: false,
       userData: {},
+      stockData:[],
       userDataIsAvailable: false,
       gotUserData: false
     }
@@ -82,7 +87,67 @@ class App extends React.Component {
 
   //showBuyOrSellModal()
 
+getStocks = async () => {
+  try{
 
+  //   let results = tickerArray.map(async (ticker)=> {
+  //     return(
+  //       await axios.get(`${SERVER}/stocks?chosenTicker=${ticker}`
+  //     ).then((data)=>{
+  //       return data;})
+  //     )
+  // });
+
+      let arrayResults =[];
+
+      //"TSLA","GOOG","AAPL","AMZN", "XOM", "MSFT","NVDA", "UNH"
+
+    let results1 = await 
+        axios.get(`${SERVER}/stocks?chosenTicker=GOOG`);
+    let results2 = await 
+        axios.get(`${SERVER}/stocks?chosenTicker=TSLA`);
+    let results3 = await 
+        axios.get(`${SERVER}/stocks?chosenTicker=CRM`);
+    let results4 = await 
+        axios.get(`${SERVER}/stocks?chosenTicker=AAPL`);
+    let results5 = await 
+        axios.get(`${SERVER}/stocks?chosenTicker=AMZN`);
+    let results6 = await 
+        axios.get(`${SERVER}/stocks?chosenTicker=XOM`);
+    let results7 = await 
+        axios.get(`${SERVER}/stocks?chosenTicker=MSFT`);
+    let results8 = await 
+        axios.get(`${SERVER}/stocks?chosenTicker=NVDA`);
+    let results9 = await 
+        axios.get(`${SERVER}/stocks?chosenTicker=UNH`);
+    let results10 = await 
+        axios.get(`${SERVER}/stocks?chosenTicker=WMT`);
+
+    //  let results = []; 
+    // tickerArray.forEach(async ticker=>{
+    //   results.push(await axios.get(`${SERVER}/stocks?chosenTicker=${ticker}`))
+    // });
+
+    // let newResults = [];
+    // results.forEach(obj => newResults.push(obj));
+
+    arrayResults =[results1.data,results2.data,results3.data,results4.data,
+      results5.data,results6.data,results7.data,results8.data,results9.data,results10.data];
+    // console.log(results);
+    // console.log(results.data);
+
+    console.log(arrayResults);
+    console.log(arrayResults[0]);
+    this.setState({
+      stockData: arrayResults
+    });
+    
+    
+
+  }catch(err){
+    console.log('we have an error: ', err);
+  }
+}
 
 
   getUser = async () => {
@@ -136,7 +201,8 @@ class App extends React.Component {
   }
 
   render() {
-    if (this.props.auth0.isAuthenticated && !this.state.gotUserData) { this.getUser(); }
+    if (this.props.auth0.isAuthenticated && !this.state.gotUserData) { this.getUser();
+    this.getStocks() }
     return (
       <>
         <Router>
