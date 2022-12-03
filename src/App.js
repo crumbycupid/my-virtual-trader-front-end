@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import AssetCards from './Components/AssetCards';
+import Button from 'react-bootstrap/Button';
+import Stack from 'react-bootstrap/Stack';
 import './App.css';
 import { withAuth0 } from '@auth0/auth0-react';
 import LoginButton from './Components/LoginButton.js';
@@ -8,9 +10,30 @@ import LogoutButton from './Components/LogoutButton.js';
 import Profile from './Components/Profile.js';
 import Header from './Components/Header.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AddAssetDropdown from './Components/AddAssetDropdown';
 
 
 let SERVER = process.env.REACT_APP_SERVER;
+let newUserPortfolio=[
+  {
+    "ticker": "GOOG",
+    "amountOwned": 0,
+    "boughtAt": 0
+  },{
+      "ticker": "TSLA",
+      "amountOwned": 0,
+      "boughtAt": 0
+    },{
+    "ticker": "AAPL",
+    "amountOwned": 0,
+    "boughtAt": 0
+  },
+ {
+    "ticker": "AMZN",
+    "amountOwned": 0,
+    "boughtAt": 0
+  }
+]
 
 class App extends React.Component {
   constructor(props) {
@@ -49,6 +72,9 @@ class App extends React.Component {
 
   //showBuyOrSellModal()
 
+
+
+
   getUser = async () => {
     try {
       this.setState({
@@ -60,7 +86,7 @@ class App extends React.Component {
 
       if (results.data.length === 0) {
         console.log('HERE!')
-        this.createUser({name: this.props.auth0.user.name, email: this.props.auth0.user.email, portfolio: []});
+        this.createUser({name: this.props.auth0.user.name, email: this.props.auth0.user.email, portfolio: newUserPortfolio});
         results = await axios.get(`${SERVER}/user?${this.props.auth0.user.email}`);
       }
       this.setState({
@@ -85,6 +111,10 @@ class App extends React.Component {
 
   }
 
+  handlePortfolioModal = () => {
+    console.log('Show the Portfolio Modal')
+  }
+
   // componentDidMount() {
   //  this.getUser();
   // }
@@ -103,17 +133,33 @@ class App extends React.Component {
         {this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />}
         {this.props.auth0.isAuthenticated ? <Profile /> : <h3>Please Log In</h3>}
 
+
+        {this.props.auth0.isAuthenticated ?
+         <Stack direction="horizontal" gap={3}>
+
+            <div className="bg-light border">
+              <AddAssetDropdown/>
+            </div>
+
+            <div className="bg-light border ms-2">
+              <Button variant="outline-dark" 
+                onClick={this.handlePortfolioModal}
+                >Current Balance is 10K
+              </Button>
+            </div>
+            
+          </Stack> : null}
         {/* //<div flexbox> 
       //Tabs(for adding new asset) hard code the 15 to 20
       // Current balance(button) pass user's portfolio
     //<div flexbox> */}
-        {/* {this.state.userDataIsAvailable &&
+        {this.state.userDataIsAvailable &&
           <AssetCards
             portfolio={this.state.userData.portfolio}
           // handleBuyOrSellModal = {this.showBuyOrSellModal}
           />
 
-        } */}
+        }
 
 
         <p>Hello World</p>
