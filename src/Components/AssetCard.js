@@ -2,6 +2,7 @@ import React from "react";
 
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 class AssetCard extends React.Component{
   // constructor(props){
@@ -14,6 +15,10 @@ class AssetCard extends React.Component{
   //build graph in here
 
 //   handleClick = () => {
+
+  showBuyOrSellModel = () => {
+    console.log("Show the buy or sell modal");
+  }
 
 //     // this.props.showBuyOrSellModal(this.props.portfolio.ticker);
 // //call the buy sell modal(pass the ticker)
@@ -44,7 +49,7 @@ class AssetCard extends React.Component{
 //     "__v": 0
 //   }
 // ]
-        console.log(this.props.asset);
+
     return(
     <Col>
       <Card style={{ width: '18rem' }}>
@@ -53,7 +58,9 @@ class AssetCard extends React.Component{
         <Card.Title>{this.props.asset.ticker}</Card.Title>
         <Card.Text>
           This is where the price and amountOwned go.
+          
         </Card.Text>
+        <Button onClick={this.showBuyOrSellModel}>Buy or Sell</Button>
       </Card.Body>
     </Card>
   
