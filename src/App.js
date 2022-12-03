@@ -11,12 +11,17 @@ import Profile from './Components/Profile.js';
 import Header from './Components/Header.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddAssetDropdown from './Components/AddAssetDropdown';
+
 import LandingPage from './Components/LandingPage.js'
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
+
+import PortfolioModal from './Components/PortfolioModal'
+
+
 
 let SERVER = process.env.REACT_APP_SERVER;
 let newUserPortfolio = [
@@ -90,8 +95,11 @@ class App extends React.Component {
       console.log(results);
 
       if (results.data.length === 0) {
-        console.log('HERE!')
+
         this.createUser({ name: this.props.auth0.user.name, email: this.props.auth0.user.email, portfolio: newUserPortfolio });
+=======
+        this.createUser({ name: this.props.auth0.user.name, email: this.props.auth0.user.email, portfolio: newUserPortfolio, balance: 10000 });
+
         results = await axios.get(`${SERVER}/user?${this.props.auth0.user.email}`);
       }
       this.setState({
@@ -105,7 +113,7 @@ class App extends React.Component {
 
 
   createUser = async (aUser) => {
-    console.log('HERE!')
+    console.log('created a user')
     try {
       let userThatWasAdded = await axios.post(`${SERVER}/user`, aUser);
       console.log(userThatWasAdded);
@@ -116,8 +124,18 @@ class App extends React.Component {
 
   }
 
-  handlePortfolioModal = () => {
+  handleOpenPortfolioModal = () => {
     console.log('Show the Portfolio Modal')
+    this.setState({
+      isPortfolioModalShown: true
+    });
+  }
+
+  handleClosePortfolioModal = () => {
+    console.log('Close the Portfolio Modal')
+    this.setState({
+      isPortfolioModalShown: false
+    });
   }
 
   // componentDidMount() {
@@ -181,6 +199,36 @@ class App extends React.Component {
               portfolio={this.state.userData.portfolio}
             // handleBuyOrSellModal = {this.showBuyOrSellModal}
             />
+
+     {this.props.auth0.isAuthenticated ?
+          <Stack direction="horizontal" gap={3}>
+
+            <div className="bg-light border">
+              <AddAssetDropdown />
+            </div>
+
+            <div className="bg-light border ms-2">
+              <Button variant="outline-dark"
+                onClick={this.handleOpenPortfolioModal}
+              >Current Balance is {this.state.userData.balance}
+              </Button>
+            </div>
+
+          </Stack> : null}
+        {/* //<div flexbox> 
+      //Tabs(for adding new asset) hard code the 15 to 20
+      // Current balance(button) pass user's portfolio
+    //<div flexbox> */}
+        {this.state.userDataIsAvailable && this.props.auth0.isAuthenticated &&
+        <>
+        <PortfolioModal userData={this.state.userData} onHide={this.handleClosePortfolioModal} show={this.state.isPortfolioModalShown}
+        />
+          <AssetCards
+            portfolio={this.state.userData.portfolio}
+          // handleBuyOrSellModal = {this.showBuyOrSellModal}
+          />
+          </>
+
 
           }
 
