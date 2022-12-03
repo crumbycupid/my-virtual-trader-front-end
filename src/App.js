@@ -199,11 +199,11 @@ class App extends React.Component {
             // handleBuyOrSellModal = {this.showBuyOrSellModal}
             />
           } */}
-          {this.props.auth0.isAuthenticated ?
+          {this.state.userDataIsAvailable && this.props.auth0.isAuthenticated ?
             <Stack direction="horizontal" gap={3}>
 
               <div className="bg-light border">
-                <AddAssetDropdown />
+                <AddAssetDropdown portfolio={this.state.userData.portfolio}/>
               </div>
 
               <div className="bg-light border ms-2">
