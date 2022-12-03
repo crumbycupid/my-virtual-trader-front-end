@@ -96,8 +96,7 @@ class App extends React.Component {
 
       if (results.data.length === 0) {
 
-        this.createUser({ name: this.props.auth0.user.name, email: this.props.auth0.user.email, portfolio: newUserPortfolio });
-=======
+
         this.createUser({ name: this.props.auth0.user.name, email: this.props.auth0.user.email, portfolio: newUserPortfolio, balance: 10000 });
 
         results = await axios.get(`${SERVER}/user?${this.props.auth0.user.email}`);
@@ -157,25 +156,25 @@ class App extends React.Component {
           {this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />}
           {this.props.auth0.isAuthenticated ? <Profile /> : <h3>Please Log In</h3>}
           <Routes>
-            <Route 
+            <Route
               exact path="./LandingPage.js"
-              element={<LandingPage 
+              element={<LandingPage
                 BuyOrSellModalShown={this.state.isBuyOrSellModalShown}
                 PortfolioModalShown={this.state.isPortfolioModalShown}
                 isUserDataAvailable={this.state.userDataIsAvailable}
                 haveUserData={this.state.gotUserData}
               />}
-            
-            
+
+
             />
-            <Route 
-            
-            
-            
+            <Route
+
+
+
             />
           </Routes>
 
-          {this.props.auth0.isAuthenticated ?
+          {/* {this.props.auth0.isAuthenticated ?
             <Stack direction="horizontal" gap={3}>
 
               <div className="bg-light border">
@@ -189,45 +188,45 @@ class App extends React.Component {
                 </Button>
               </div>
 
+            </Stack> : null} */}
+          {/* //<div flexbox> 
+      //Tabs(for adding new asset) hard code the 15 to 20
+      // Current balance(button) pass user's portfolio
+    //<div flexbox> */}
+          {/* {this.state.userDataIsAvailable &&
+            <AssetCards
+              portfolio={this.state.userData.portfolio}
+            // handleBuyOrSellModal = {this.showBuyOrSellModal}
+            />
+          } */}
+          {this.props.auth0.isAuthenticated ?
+            <Stack direction="horizontal" gap={3}>
+
+              <div className="bg-light border">
+                <AddAssetDropdown />
+              </div>
+
+              <div className="bg-light border ms-2">
+                <Button variant="outline-dark"
+                  onClick={this.handleOpenPortfolioModal}
+                >Current Balance is {this.state.userData.balance}
+                </Button>
+              </div>
+
             </Stack> : null}
           {/* //<div flexbox> 
       //Tabs(for adding new asset) hard code the 15 to 20
       // Current balance(button) pass user's portfolio
     //<div flexbox> */}
-          {this.state.userDataIsAvailable &&
-            <AssetCards
-              portfolio={this.state.userData.portfolio}
-            // handleBuyOrSellModal = {this.showBuyOrSellModal}
-            />
-
-     {this.props.auth0.isAuthenticated ?
-          <Stack direction="horizontal" gap={3}>
-
-            <div className="bg-light border">
-              <AddAssetDropdown />
-            </div>
-
-            <div className="bg-light border ms-2">
-              <Button variant="outline-dark"
-                onClick={this.handleOpenPortfolioModal}
-              >Current Balance is {this.state.userData.balance}
-              </Button>
-            </div>
-
-          </Stack> : null}
-        {/* //<div flexbox> 
-      //Tabs(for adding new asset) hard code the 15 to 20
-      // Current balance(button) pass user's portfolio
-    //<div flexbox> */}
-        {this.state.userDataIsAvailable && this.props.auth0.isAuthenticated &&
-        <>
-        <PortfolioModal userData={this.state.userData} onHide={this.handleClosePortfolioModal} show={this.state.isPortfolioModalShown}
-        />
-          <AssetCards
-            portfolio={this.state.userData.portfolio}
-          // handleBuyOrSellModal = {this.showBuyOrSellModal}
-          />
-          </>
+          {this.state.userDataIsAvailable && this.props.auth0.isAuthenticated &&
+            <>
+              <PortfolioModal userData={this.state.userData} onHide={this.handleClosePortfolioModal} show={this.state.isPortfolioModalShown}
+              />
+              <AssetCards
+                portfolio={this.state.userData.portfolio}
+              // handleBuyOrSellModal = {this.showBuyOrSellModal}
+              />
+            </>
 
 
           }
