@@ -46,7 +46,7 @@ let newUserPortfolio = [
 ]
 
 let tickerArray = [
-  "TSLA","GOOG","AAPL","AMZN", "XOM", "MSFT","NVDA", "UNH"
+  "GOOG","TSLA","CRM","AAPL","AMZN","XOM","MSFT","NVDA","UNH","WMT"
 ];
 
 class App extends React.Component {
@@ -58,6 +58,7 @@ class App extends React.Component {
       userData: {},
       stockData:[],
       userDataIsAvailable: false,
+      stockDataIsAvailable: false,
       gotUserData: false
     }
   }
@@ -123,23 +124,19 @@ getStocks = async () => {
     let results10 = await 
         axios.get(`${SERVER}/stocks?chosenTicker=WMT`);
 
-    //  let results = []; 
-    // tickerArray.forEach(async ticker=>{
-    //   results.push(await axios.get(`${SERVER}/stocks?chosenTicker=${ticker}`))
-    // });
+        //"GOOG","TSLA","CRM","AAPL","AMZN","XOM","MSFT","NVDA","UNH","WMT"
 
-    // let newResults = [];
-    // results.forEach(obj => newResults.push(obj));
 
     arrayResults =[results1.data,results2.data,results3.data,results4.data,
       results5.data,results6.data,results7.data,results8.data,results9.data,results10.data];
-    // console.log(results);
-    // console.log(results.data);
+    
 
-    console.log(arrayResults);
-    console.log(arrayResults[0]);
+     //console.log(arrayResults);
+    // console.log(arrayResults[0]);
+
     this.setState({
-      stockData: arrayResults
+      stockData: arrayResults,
+      stockDataIsAvailable: true,
     });
     
     
@@ -155,9 +152,9 @@ getStocks = async () => {
       this.setState({
         gotUserData: true
       });
-      console.log(this.props.auth0.user.email);
+      //console.log(this.props.auth0.user.email);
       let results = await axios.get(`${SERVER}/user?email=${this.props.auth0.user.email}`);
-      console.log(results);
+      //console.log(results);
 
       if (results.data.length === 0) {
 
@@ -186,6 +183,55 @@ getStocks = async () => {
       console.log('we have an error creating a user');
     }
 
+  }
+
+  //app.put('/user/:id', updateStock);
+  updateStock = async (stockToUpdate) => {
+    try {
+      let url = `${SERVER}/user/${this.state.userData._id}`;
+
+        let updatedUser = this.state.userData;
+        
+        updatedUser.portfolio.push({
+            "ticker": stockToUpdate,
+            "amountOwned": 0,
+            "boughtAt": 0
+        });
+
+      this.setState({
+        userData: updatedUser
+      });
+
+      let updatedUserPortfolio = await axios.put(url, updatedUser);
+          
+      //console.log(updatedUserPortfolio.data);
+
+    } catch (err) {
+      console.log('We have an error: ', err.response.data);
+    }
+  }
+
+  // NEED to Finish here
+  deleteStock = async (ticker) => {
+    try {
+      let url = `${SERVER}/user/${this.state.userData._id}`;
+
+        let updatedUser = this.state.userData;
+        
+        updatedUser.portfolio = updatedUser.portfolio.filter(stock => stock.ticker !== ticker);
+    //console.log(updatedUser);
+
+      this.setState({
+        userData: updatedUser
+      });
+
+      let updatedUserPortfolio = await axios.put(url, updatedUser);
+          
+      //console.log(updatedUserPortfolio);
+
+    } catch (err) {
+      console.log('We have an error: ', err.response.data);
+    }
   }
 
   handleOpenPortfolioModal = () => {
@@ -228,36 +274,14 @@ getStocks = async () => {
             />
           </Routes>
 
-          {/* {this.props.auth0.isAuthenticated ?
-            <Stack direction="horizontal" gap={3}>
-
-              <div className="bg-light border">
-                <AddAssetDropdown />
-              </div>
-
-              <div className="bg-light border ms-2">
-                <Button variant="outline-dark"
-                  onClick={this.handlePortfolioModal}
-                >Current Balance is 10K
-                </Button>
-              </div>
-
-            </Stack> : null} */}
-          {/* //<div flexbox> 
-      //Tabs(for adding new asset) hard code the 15 to 20
-      // Current balance(button) pass user's portfolio
-    //<div flexbox> */}
-          {/* {this.state.userDataIsAvailable &&
-            <AssetCards
-              portfolio={this.state.userData.portfolio}
-            // handleBuyOrSellModal = {this.showBuyOrSellModal}
-            />
-          } */}
+          
           {this.state.userDataIsAvailable && this.props.auth0.isAuthenticated ?
             <Stack direction="horizontal" gap={3}>
 
               <div className="bg-light border">
-                <AddAssetDropdown portfolio={this.state.userData.portfolio}/>
+                <AddAssetDropdown
+                updateStock = {this.updateStock}
+                 portfolio={this.state.userData.portfolio}/>
               </div>
 
               <div className="bg-light border ms-2">
@@ -272,11 +296,14 @@ getStocks = async () => {
       //Tabs(for adding new asset) hard code the 15 to 20
       // Current balance(button) pass user's portfolio
     //<div flexbox> */}
-          {this.state.userDataIsAvailable && this.props.auth0.isAuthenticated &&
+          {this.state.userDataIsAvailable && this.props.auth0.isAuthenticated && this.state.stockDataIsAvailable &&
             <>
               <PortfolioModal userData={this.state.userData} onHide={this.handleClosePortfolioModal} show={this.state.isPortfolioModalShown}
               />
+              <p></p>
               <AssetCards
+                deleteStock={this.deleteStock}
+                stockData={this.state.stockData}
                 portfolio={this.state.userData.portfolio}
               // handleBuyOrSellModal = {this.showBuyOrSellModal}
               />

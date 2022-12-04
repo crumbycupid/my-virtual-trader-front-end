@@ -1,8 +1,12 @@
 import React from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 
+let tickerAndNameArray = [
+  "Alphabet: GOOG","Tesla: TSLA","Salesforce: CRM","Apple: AAPL","Amazon: AMZN","Exxon Mobil: XOM","Microsoft: MSFT","Nvidia: NVDA","Walmart: WMT"
+];
+
 let tickerArray = [
-  "Tesla: TSLA","Alphabet: GOOG","Apple: AAPL","Amazon: AMZN", "Twitter: TWTR", "Exxon Mobil: XOM", "Microsoft: MSFT","Nvidia: NVDA", "Berkshire Hathaway: BRK.B", "UnitedHealth Group: UNH"
+  "GOOG","TSLA","CRM","AAPL","AMZN","XOM","MSFT","NVDA","WMT"
 ];
 
 class AddAssetDropdown extends React.Component{
@@ -20,7 +24,7 @@ addTickers = (company) => {
     //console.log(tickerArray)
 
 
-    let dropDownTicker = tickerArray.map((company,idx) => {
+    let dropDownTicker = tickerAndNameArray.map((company,idx) => {
 
          let isActionable = true;
           for(let i = 0; i < tickerArray.length; i++){
@@ -30,7 +34,7 @@ addTickers = (company) => {
           }
           if(isActionable){
             return(
-            <Dropdown.Item key={idx} onClick={()=>this.addTickers(company)}>
+            <Dropdown.Item key={idx} onClick={()=>this.props.updateStock(tickerArray[idx])}>
             {company}
             </Dropdown.Item>);
           }else{
