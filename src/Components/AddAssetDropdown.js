@@ -1,5 +1,6 @@
 import React from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
+import './AddAssetDropdown.css';
 
 let tickerAndNameArray = [
   "Alphabet: GOOG","Tesla: TSLA","Salesforce: CRM","Apple: AAPL","Amazon: AMZN","Exxon Mobil: XOM","Microsoft: MSFT","Nvidia: NVDA","Walmart: WMT"
@@ -53,7 +54,7 @@ addTickers = (company) => {
               Add a Stock
             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
+            <Dropdown.Menu id="dropDownMenu">
               {dropDownTicker}
             </Dropdown.Menu>
       </Dropdown>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../App.css';
-import logo from './logo.jpg'
+import logo from './logo.jpg';
 
 class Header extends React.Component {
   render() {
