@@ -12,6 +12,7 @@ import Profile from './Components/Profile.js';
 import Header from './Components/Header.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddAssetDropdown from './Components/AddAssetDropdown';
+import './Header.css';
 
 import LandingPage from './Components/LandingPage.js';
 import AboutProfile from './Components/About.js';
@@ -251,7 +252,7 @@ getStocks = async () => {
     if (this.props.auth0.isAuthenticated && !this.state.gotUserData) { this.getUser();
     this.getStocks() }
     return (
-      <>
+      <div id='contents'>
         <Router>
           <Header id="header" />
           {this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />}
@@ -320,7 +321,7 @@ getStocks = async () => {
            
           </Routes>
         </Router>
-      </>
+      </div>
     );
 
   }
