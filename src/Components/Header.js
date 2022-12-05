@@ -19,7 +19,6 @@ class Header extends React.Component {
             <div className="row">
               <div className="col-md-12 text-center">
                 <img width="170px" height="150px" src={logo} alt="My Virtual Trader Logo"></img>
-                <h1 className="animate-charcter">My Virtual Trader</h1>
               </div>
             </div>
           </div>

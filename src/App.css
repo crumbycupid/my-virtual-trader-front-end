@@ -1,5 +1,16 @@
+
+#contents {
+    display: flexbox;
+}
+
+
+#header {
+    display: flex;
+    flex-direction: row;
+
 #headerDiv {
   display: flex;
+
 }
 
 #spinner {
