@@ -17,8 +17,10 @@ import LandingPage from './Components/LandingPage.js';
 import AboutProfile from './Components/About.js';
 import {
   BrowserRouter as Router,
+  Switch,
   Routes,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 
 import PortfolioModal from './Components/PortfolioModal';
@@ -256,7 +258,7 @@ getStocks = async () => {
           {this.props.auth0.isAuthenticated ? <Profile /> : <h3>Please Log In</h3>}
           <Routes>
             <Route
-              exact path="/landingPage.js"
+              exact path="/"
               element={<LandingPage
                 BuyOrSellModalShown={this.state.isBuyOrSellModalShown}
                 PortfolioModalShown={this.state.isPortfolioModalShown}
@@ -269,7 +271,7 @@ getStocks = async () => {
             element={<AboutProfile/>}
           />
             <Route
-            exact path="/"
+            exact path="/App.js"
             element={
               <>
             {this.state.userDataIsAvailable && this.props.auth0.isAuthenticated ?
