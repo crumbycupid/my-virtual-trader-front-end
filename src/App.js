@@ -14,6 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AddAssetDropdown from './Components/AddAssetDropdown';
 
 import LandingPage from './Components/LandingPage.js';
+import AboutProfile from './Components/About.js';
 import {
   BrowserRouter as Router,
   Routes,
@@ -267,10 +268,10 @@ getStocks = async () => {
                 haveUserData={this.state.gotUserData}
               />}
             /> 
-            {/* <Route
+            <Route
             exact path="/About.js"
-            element={<About/>}
-          /> */}
+            element={<AboutProfile/>}
+          />
             <Route
             exact path="/"
             element={
