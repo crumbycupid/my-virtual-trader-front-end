@@ -26,50 +26,13 @@ ChartJS.register(
 );
 
 class AssetCard extends React.Component {
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     likes:0,
-  //   };
-  // }
-
-  //build graph in here
-
-  //   handleClick = () => {
 
   showBuyOrSellModel = () => {
     console.log("Show the buy or sell modal");
   }
 
-  //     // this.props.showBuyOrSellModal(this.props.portfolio.ticker);
-  // //call the buy sell modal(pass the ticker)
-
-  //   };
 
   render() {
-
-    // constructor(chartObject, formattedTime) {
-    //   this.ticker = chartObject.ticker;
-    //   this.resultsCount = chartObject.resultsCount;
-    //   this.closePrice = chartObject.results.map(price => price.c);
-    //   this.formattedTime = formattedTime;
-    // }
-
-    // [
-    //   {
-    //     "_id": "638923e743beb3ec18854364",
-    //     "name": "Craig",
-    //     "email": "craig@gmail.com",
-    //     "portfolio": [
-    //       {
-    //         "ticker": "GOOG",
-    //         "amountOwned": 20000,
-    //         "boughtAt": 250
-    //       }
-    //     ],
-    //     "__v": 0
-    //   }
-    // ]
 
     let currentStock = {};
 
@@ -141,7 +104,7 @@ class AssetCard extends React.Component {
 
     return (
       <Col>
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem' }} id="stocksCard">
           <Line
             options={options}
             data={data}
