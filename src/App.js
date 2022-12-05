@@ -257,7 +257,7 @@ getStocks = async () => {
           {this.props.auth0.isAuthenticated ? <Profile /> : <h3>Please Log In</h3>}
           <Routes>
             <Route
-              exact path="./LandingPage.js"
+              exact path="/landingPage.js"
               element={<LandingPage
                 BuyOrSellModalShown={this.state.isBuyOrSellModalShown}
                 PortfolioModalShown={this.state.isPortfolioModalShown}
