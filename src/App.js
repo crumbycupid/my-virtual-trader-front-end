@@ -253,7 +253,7 @@ getStocks = async () => {
         <Router>
           <Header id="header" />
           {this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />}
-          {this.props.auth0.isAuthenticated ? <Profile /> : <h3>Please Log In</h3>}
+          {this.props.auth0.isAuthenticated && <Profile />}
           <Routes>
             <Route
               exact path="/landingPage.js"
