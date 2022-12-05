@@ -47,10 +47,6 @@ let newUserPortfolio = [
   }
 ]
 
-let tickerArray = [
-  "GOOG","TSLA","CRM","AAPL","AMZN","XOM","MSFT","NVDA","UNH","WMT"
-];
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -292,7 +288,7 @@ getStocks = async () => {
               <div className="bg-light border ms-2">
                 <Button variant="outline-dark"
                   onClick={this.handleOpenPortfolioModal}
-                >Current Balance is {this.state.userData.balance}
+                >Current Balance
                 </Button>
               </div>
 
