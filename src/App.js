@@ -3,6 +3,7 @@ import axios from 'axios';
 import AssetCards from './Components/AssetCards';
 import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
+import Spinner from 'react-bootstrap/Spinner';
 import './App.css';
 import { withAuth0 } from '@auth0/auth0-react';
 import LoginButton from './Components/LoginButton.js';
@@ -11,6 +12,7 @@ import Profile from './Components/Profile.js';
 import Header from './Components/Header.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddAssetDropdown from './Components/AddAssetDropdown';
+
 
 import LandingPage from './Components/LandingPage.js'
 import {
@@ -159,8 +161,9 @@ getStocks = async () => {
       if (results.data.length === 0) {
 
 
-        this.createUser({ name: this.props.auth0.user.name, email: this.props.auth0.user.email, portfolio: newUserPortfolio, balance: 10000 });
-
+        await this.createUser({ name: this.props.auth0.user.name, email: this.props.auth0.user.email, portfolio: newUserPortfolio, balance: 10000 });
+        
+    
         results = await axios.get(`${SERVER}/user?${this.props.auth0.user.email}`);
       }
       this.setState({
@@ -273,6 +276,8 @@ getStocks = async () => {
 
             />
           </Routes>
+          
+          
 
           
           {this.state.userDataIsAvailable && this.props.auth0.isAuthenticated ?
@@ -292,10 +297,15 @@ getStocks = async () => {
               </div>
 
             </Stack> : null}
-          {/* //<div flexbox> 
-      //Tabs(for adding new asset) hard code the 15 to 20
-      // Current balance(button) pass user's portfolio
-    //<div flexbox> */}
+         
+            {
+            !this.state.stockDataIsAvailable && this.props.auth0.isAuthenticated && 
+            <div id='spinner'><Spinner id="spinner"  animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner></div>  
+          }
+
+
           {this.state.userDataIsAvailable && this.props.auth0.isAuthenticated && this.state.stockDataIsAvailable &&
             <>
               <PortfolioModal userData={this.state.userData} onHide={this.handleClosePortfolioModal} show={this.state.isPortfolioModalShown}
@@ -312,8 +322,6 @@ getStocks = async () => {
 
           }
 
-
-          <p>Hello World</p>
         </Router>
       </>
     );
