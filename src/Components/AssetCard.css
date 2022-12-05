@@ -1,7 +1,7 @@
 .boxDeleteButton {
     flex-flow: row wrap;
     justify-content: space-around;
-    width: 150px;
+    width: 180px;
     height: 60px;
     margin: 30px;
     /* display-webkit-flex: inline-flex; */
@@ -12,16 +12,14 @@
 
 .buttonOne {
     margin: auto;
-
-
     display: inline-block;
     height: calc(35px + (35 - 30) * (100vw - 270px) / (1000 - 270));
-    width: calc(100px + (150 - 100) * (100vw - 270px) / (1000 - 270));
+    width: calc(150px + (150 - 100) * (100vw - 270px) / (1000 - 270));
     font-size: calc(13px + (13 - 9) * (100vw - 270px) / (1000 - 270));
     -webkit-box-shadow: 0px 4px 5px 0px rgba(87, 79, 87, 1);
     -moz-box-shadow: 0px 4px 5px 0px rgba(87, 79, 87, 1);
     box-shadow: 0px 4px 5px 0px rgba(87, 79, 87, 1);
-    border: none;
+    border: 2px solid transparent;
     border-radius: 2px;
     color: #000;
     position: relative;
@@ -32,6 +30,7 @@
     display: inline-block;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     text-transform: uppercase;
+    font-size: 20px;
     letter-spacing: 0;
     overflow: hidden;
     will-change: box-shadow;
@@ -42,6 +41,10 @@
     text-align: center;
     line-height: 36px;
     vertical-align: middle;
+}
+
+.buttonOne:hover {
+    border: 2px solid #002400;
 }
 
 .lava-lamp {
@@ -65,12 +68,12 @@
     transition: 1s ease-in-out;
 
 
-    -webkit-animation: AnimationName 4s ease infinite;
-    -moz-animation: AnimationName 4s ease infinite;
-    animation: AnimationName 4s ease infinite;
+    -webkit-animation: BtnOne 4s ease infinite;
+    -moz-animation: BtnOne 4s ease infinite;
+    animation: BtnOne 4s ease infinite;
     animation-direction: alternate;
 
-    @-webkit-keyframes AnimationName {
+    @-webkit-keyframes BtnOne {
         0% {
             background-position: left center;
             background-size: 150% 150%;
@@ -90,7 +93,7 @@
     }
 }
 
-@-moz-keyframes AnimationName {
+@-moz-keyframes BtnOne {
     0% {
         background-position: left center;
         background-size: 150% 150%;
@@ -109,7 +112,7 @@
 
 }
 
-@keyframes AnimationName {
+@keyframes BtnOne {
     0% {
         background-position: left center;
         background-size: 150% 150%;
@@ -259,4 +262,56 @@
         background-size: 250% 250%;
     }
 
+}
+
+#stocksCard {
+    background: linear-gradient(54deg, #c4c6c6, #fffaf9, #c6c2c2);
+    background-size: 600% 600%;
+
+    -webkit-animation: Cardbackground 20s ease infinite;
+    -moz-animation: Cardbackground 20s ease infinite;
+    animation: Cardbackground 20s ease infinite;
+
+}
+
+@-webkit-keyframes Cardbackground {
+    0% {
+        background-position: 0% 84%
+    }
+
+    50% {
+        background-position: 100% 17%
+    }
+
+    100% {
+        background-position: 0% 84%
+    }
+}
+
+@-moz-keyframes Cardbackground {
+    0% {
+        background-position: 0% 84%
+    }
+
+    50% {
+        background-position: 100% 17%
+    }
+
+    100% {
+        background-position: 0% 84%
+    }
+}
+
+@keyframes Cardbackground {
+    0% {
+        background-position: 0% 84%
+    }
+
+    50% {
+        background-position: 100% 17%
+    }
+
+    100% {
+        background-position: 0% 84%
+    }
 }
