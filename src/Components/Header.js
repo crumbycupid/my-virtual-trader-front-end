@@ -24,7 +24,10 @@ class Header extends React.Component {
             </div>
           </div>
           <NavItem id="navItemLanding"><Link to="/landingPage.js" className="nav-link" id="landingLink">Home</Link></NavItem>
+
           <NavItem id="navItemHome"><Link to="/" className="nav-link" id="homeLink">Portfolio</Link></NavItem>
+
+          <NavItem id="navItemAbout"><Link to="/About.js" className="nav-link" id="aboutLink">About Us</Link></NavItem>
         </Navbar>
       </>
     )

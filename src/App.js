@@ -13,15 +13,14 @@ import Header from './Components/Header.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddAssetDropdown from './Components/AddAssetDropdown';
 
-
-import LandingPage from './Components/LandingPage.js'
+import LandingPage from './Components/LandingPage.js';
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
 
-import PortfolioModal from './Components/PortfolioModal'
+import PortfolioModal from './Components/PortfolioModal';
 
 
 
@@ -267,20 +266,16 @@ getStocks = async () => {
                 isUserDataAvailable={this.state.userDataIsAvailable}
                 haveUserData={this.state.gotUserData}
               />}
-
-
-            />
+            /> 
+            {/* <Route
+            exact path="/About.js"
+            element={<About/>}
+          /> */}
             <Route
-
-
-
-            />
-          </Routes>
-          
-          
-
-          
-          {this.state.userDataIsAvailable && this.props.auth0.isAuthenticated ?
+            exact path="/"
+            element={
+              <>
+            {this.state.userDataIsAvailable && this.props.auth0.isAuthenticated ?
             <Stack direction="horizontal" gap={3}>
 
               <div className="bg-light border">
@@ -300,7 +295,7 @@ getStocks = async () => {
          
             {
             !this.state.stockDataIsAvailable && this.props.auth0.isAuthenticated && 
-            <div id='spinner'><Spinner id="spinner"  animation="border" role="status">
+            <div id='spinner'><Spinner size="lg"  animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
           </Spinner></div>  
           }
@@ -318,10 +313,13 @@ getStocks = async () => {
               // handleBuyOrSellModal = {this.showBuyOrSellModal}
               />
             </>
-
-
           }
-
+            </>
+            }
+            
+          />
+           
+          </Routes>
         </Router>
       </>
     );
