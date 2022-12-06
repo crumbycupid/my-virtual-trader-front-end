@@ -10,10 +10,6 @@ class AssetCards extends React.Component{
   render() {
 
      let cardsArray = this.props.portfolio;
-
-     //console.log(cardsArray);
-    
-    // cardsArray = this.handleCards(this.props.portfolio);
   
     let newerArr = cardsArray.map((asset,idx)=>{ 
       return(
@@ -24,10 +20,7 @@ class AssetCards extends React.Component{
       asset = {asset}
       stockData = {this.props.stockData}
       
-      // title= {beast.title} 
-      // description= {beast.description} 
-      // keyword= {beast.keyword} 
-      // horns= {beast.horns}
+    
       />
     )
   });

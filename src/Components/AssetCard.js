@@ -109,7 +109,7 @@ class AssetCard extends React.Component {
             options={options}
             data={data}
           />
-          {/* <Card.Img onClick = {this.handleClick} variant="top" src={this.props.image_url} /> */}
+         
           <Card.Body>
             <Card.Title>{this.props.asset.ticker}</Card.Title>
             <Card.Text>
@@ -119,21 +119,10 @@ class AssetCard extends React.Component {
             <div className="boxDeleteButton">
               <button className="buttonOne green-radial gradient-background" onClick={() => this.props.deleteStock(this.props.asset.ticker)}>Remove Stock</button>
             </div>
-            {/* <Button onClick={this.showBuyOrSellModel}>Remove Stock</Button> */}
+     
           </Card.Body>
         </Card>
 
-        {/* <h2>{this.props.title}</h2>
-      <img 
-      onClick = {this.handleClick}
-      height = "300px" 
-      width = "300px" 
-      alt={this.props.description} 
-      src={this.props.image_url}
-      title = {this.props.title} />
-      <p>{this.props.description} </p>
-      <p>❤️ {this.state.likes}</p>
-       */}
       </Col>
     );
   }

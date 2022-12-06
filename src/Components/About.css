@@ -1,5 +1,5 @@
 .card1 {
-    height: 450px;
+    height: 500px;
     width: 300px;
     display: flex;
     align-items: center;
@@ -24,7 +24,7 @@
 
 .card1:after {
     width: 280px;
-    height: 430px;
+    height: 480px;
     position: absolute;
     content: '';
     background: #efefef;
@@ -56,7 +56,7 @@
 }
 
 .card2 {
-    height: 450px;
+    height: 500px;
     width: 300px;
     display: flex;
     align-items: center;
@@ -80,7 +80,7 @@
 
 .card2:after {
     width: 280px;
-    height: 430px;
+    height: 480px;
     position: absolute;
     content: '';
     background: #efefef;
@@ -105,7 +105,7 @@
 }
 
 .card3 {
-    height: 450px;
+    height: 500px;
     width: 300px;
     display: flex;
     align-items: center;
@@ -129,7 +129,7 @@
 
 .card3:after {
     width: 280px;
-    height: 430px;
+    height: 480px;
     position: absolute;
     content: '';
     background: #efefef;
@@ -146,7 +146,7 @@
 }
 
 .card4 {
-    height: 450px;
+    height: 500px;
     width: 300px;
     display: flex;
     align-items: center;
@@ -170,7 +170,7 @@
 
 .card4:after {
     width: 280px;
-    height: 430px;
+    height: 480px;
     position: absolute;
     content: '';
     background: #efefef;
@@ -192,3 +192,4 @@
     text-align: center;
     font-size: 25;
 }
+

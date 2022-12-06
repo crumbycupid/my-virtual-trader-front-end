@@ -19,10 +19,9 @@ addTickers = (company) => {
 
   render(){
 
-    //console.log(this.props.portfolio);
-    //console.log(this.props.portfolio.map(obj=>obj.ticker));
+   
     let portTickerArr = this.props.portfolio.map(obj=>obj.ticker)
-    //console.log(tickerArray)
+    
 
 
     let dropDownTicker = tickerAndNameArray.map((company,idx) => {
