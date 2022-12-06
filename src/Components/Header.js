@@ -33,7 +33,6 @@ class Header extends React.Component {
             <NavItem id="navItemLanding"><Link to="/" className="nav-link" id="landingLink">Home</Link></NavItem>
 
             <NavItem id="navItemHome"><Link to="/App.js" className="nav-link" id="homeLink">Portfolio</Link></NavItem>
-
             <NavItem id="navItemAbout"><Link to="/About.js" className="nav-link" id="aboutLink">About Us</Link></NavItem>
           </div>
           <div id="personal">
