@@ -65,7 +65,7 @@
   margin-right: 10px;
   color: black;
 }
-
-.nav-item:hover {
-    
-  }
+#explain-1-para {
+  font-size: 40px;
+  font-style: italic;
+}
