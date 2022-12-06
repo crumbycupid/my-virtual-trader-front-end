@@ -20,13 +20,15 @@ class Header extends React.Component {
               </div>
             </div>
           </div>
+
           <div id="containerTitle">
           <div className="contentTitle">
             <h2>My Virtual Portfolio</h2>
             <h2>My Virtual Portfolio</h2>
           </div>
         </div>
-          {/* <div id="titleDiv"><h1 id="titleHeader">My Virtual Portfolio</h1></div> */}
+       
+
           <div id="itemHolder">
             <NavItem id="navItemLanding"><Link to="/" className="nav-link" id="landingLink">Home</Link></NavItem>
 
