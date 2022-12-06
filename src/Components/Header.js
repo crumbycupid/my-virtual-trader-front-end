@@ -7,10 +7,6 @@ import LoginButton from './LoginButton.js';
 import LogoutButton from './LogoutButton.js';
 import Profile from './Profile.js';
 import logo from './logo.jpg';
-import { withAuth0 } from '@auth0/auth0-react';
-import LoginButton from './LoginButton.js';
-import LogoutButton from './LogoutButton.js';
-import Profile from './Profile.js';
 
 class Header extends React.Component {
   render() {
