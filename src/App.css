@@ -1,12 +1,13 @@
-
+/* 
 #contents {
     display: flexbox;
-}
+} */
 
 
 #header {
     display: flex;
     flex-direction: row;
+}
 
 #headerDiv {
   display: flex;
@@ -36,10 +37,6 @@
   font-size: larger;
 }
 
-/* #login{
-    position:absolute;
-    right:0%;
-} */
 
 #hero-img {
   width: 100%;
@@ -62,8 +59,13 @@
 
 #explain-1-para {
   width: 500px;
+  font-size: larger;
 }
 .nav-item {
   margin-right: 10px;
-  color: red;
+  color: black;
 }
+
+.nav-item:hover {
+    
+  }
