@@ -6,9 +6,6 @@ import Stack from 'react-bootstrap/Stack';
 import Spinner from 'react-bootstrap/Spinner';
 import './App.css';
 import { withAuth0 } from '@auth0/auth0-react';
-import LoginButton from './Components/LoginButton.js';
-import LogoutButton from './Components/LogoutButton.js';
-import Profile from './Components/Profile.js';
 import Header from './Components/Header.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddAssetDropdown from './Components/AddAssetDropdown';
@@ -148,7 +145,7 @@ class App extends React.Component {
 
   updateStock = async (stockToUpdate) => {
     try {
-      let url = `${SERVER}/user/${this.state.userData._id}`;
+      // let url = `${SERVER}/user/${this.state.userData._id}`;
 
       let updatedUser = this.state.userData;
 
@@ -162,7 +159,7 @@ class App extends React.Component {
         userData: updatedUser
       });
 
-      let updatedUserPortfolio = await axios.put(url, updatedUser);
+      // let updatedUserPortfolio = await axios.put(url, updatedUser);
 
     } catch (err) {
       console.log('We have an Error: ', err.response.data);
@@ -172,7 +169,7 @@ class App extends React.Component {
   // NEED to Finish here
   deleteStock = async (ticker) => {
     try {
-      let url = `${SERVER}/user/${this.state.userData._id}`;
+      // let url = `${SERVER}/user/${this.state.userData._id}`;
 
       let updatedUser = this.state.userData;
 
@@ -182,7 +179,7 @@ class App extends React.Component {
         userData: updatedUser
       });
 
-      let updatedUserPortfolio = await axios.put(url, updatedUser);
+      // let updatedUserPortfolio = await axios.put(url, updatedUser);
 
     } catch (err) {
       console.log('We have an error: ', err.response.data);
