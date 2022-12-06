@@ -255,8 +255,6 @@ getStocks = async () => {
       <div id='contents'>
         <Router>
           <Header id="header" />
-          {this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />}
-          {this.props.auth0.isAuthenticated ? <Profile /> : <h3>Please Log In</h3>}
           <Routes>
             <Route
               exact path="/"

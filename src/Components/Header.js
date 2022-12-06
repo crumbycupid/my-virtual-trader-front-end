@@ -3,6 +3,10 @@ import { Navbar, NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../App.css';
 import logo from './logo.jpg';
+import { withAuth0 } from '@auth0/auth0-react';
+import LoginButton from './LoginButton.js';
+import LogoutButton from './LogoutButton.js';
+import Profile from './Profile.js';
 
 class Header extends React.Component {
   render() {
@@ -22,15 +26,21 @@ class Header extends React.Component {
               </div>
             </div>
           </div>
+          <div id='navItems'>
           <NavItem id="navItemLanding"><Link to="/" className="nav-link" id="landingLink">Home</Link></NavItem>
 
           <NavItem id="navItemHome"><Link to="/App.js" className="nav-link" id="homeLink">Portfolio</Link></NavItem>
 
           <NavItem id="navItemAbout"><Link to="/About.js" className="nav-link" id="aboutLink">About Us</Link></NavItem>
+          </div>
+          <div>
+          {this.props.auth0.isAuthenticated ? <Profile /> : <h3>Please Log In</h3>}
+          {this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />}
+          </div>
         </Navbar>
       </>
     )
   }
 }
 
-export default Header;
+export default withAuth0(Header);
