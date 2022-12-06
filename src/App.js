@@ -145,7 +145,7 @@ class App extends React.Component {
 
   updateStock = async (stockToUpdate) => {
     try {
-      let url = `${SERVER}/user/${this.state.userData._id}`;
+      // let url = `${SERVER}/user/${this.state.userData._id}`;
 
       let updatedUser = this.state.userData;
 
@@ -169,7 +169,7 @@ class App extends React.Component {
   // NEED to Finish here
   deleteStock = async (ticker) => {
     try {
-      let url = `${SERVER}/user/${this.state.userData._id}`;
+      // let url = `${SERVER}/user/${this.state.userData._id}`;
 
       let updatedUser = this.state.userData;
 
