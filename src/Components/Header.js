@@ -20,6 +20,7 @@ class Header extends React.Component {
               </div>
             </div>
           </div>
+
           <div id="title"><h1>My Virtual Portfolio</h1></div>
           <div id="itemHolder">
             <NavItem id="navItemLanding"><Link to="/" className="nav-link" id="landingLink">Home</Link></NavItem>
