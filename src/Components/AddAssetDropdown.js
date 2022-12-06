@@ -34,7 +34,7 @@ addTickers = (company) => {
           }
           if(isActionable){
             return(
-            <Dropdown.Item key={idx} onClick={()=>this.props.updateStock(tickerArray[idx])}>
+            <Dropdown.Item key={idx} onClick={()=>this.props.updateStock(tickerArray[idx])} id="dropBtn">
             {company}
             </Dropdown.Item>);
           }else{
@@ -48,8 +48,9 @@ addTickers = (company) => {
       })
 
     return(
-      <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+      <>
+      <Dropdown id="dropBtn">
+            <Dropdown.Toggle variant="success" id="dropdown-basic" style={{ background: '#53b910' }}>
               Add a Stock
             </Dropdown.Toggle>
 
@@ -57,6 +58,7 @@ addTickers = (company) => {
               {dropDownTicker}
             </Dropdown.Menu>
       </Dropdown>
+      </>
     );
   }
 }

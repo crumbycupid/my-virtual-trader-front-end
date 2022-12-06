@@ -228,14 +228,14 @@ class App extends React.Component {
                   {this.state.userDataIsAvailable && this.props.auth0.isAuthenticated ?
                     <Stack direction="horizontal" gap={3}>
 
-                      <div className="bg-light border">
+                      <div className="bg-light ">
                         <AddAssetDropdown
                           updateStock={this.updateStock}
                           portfolio={this.state.userData.portfolio} />
                       </div>
 
-                      <div className="bg-light border ms-2">
-                        <Button variant="outline-dark"
+                      <div className="bg-light ms-2" >
+                        <Button variant="outline-dark" id="balanceBtn"
                           onClick={this.handleOpenPortfolioModal}
                         >Current Balance
                         </Button>
