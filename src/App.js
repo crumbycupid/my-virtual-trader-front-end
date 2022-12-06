@@ -159,7 +159,7 @@ class App extends React.Component {
         userData: updatedUser
       });
 
-      let updatedUserPortfolio = await axios.put(url, updatedUser);
+      // let updatedUserPortfolio = await axios.put(url, updatedUser);
 
     } catch (err) {
       console.log('We have an Error: ', err.response.data);
@@ -179,7 +179,7 @@ class App extends React.Component {
         userData: updatedUser
       });
 
-      let updatedUserPortfolio = await axios.put(url, updatedUser);
+      // let updatedUserPortfolio = await axios.put(url, updatedUser);
 
     } catch (err) {
       console.log('We have an error: ', err.response.data);
