@@ -1,7 +1,12 @@
 #entireNavBar {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 50px;
+  align-items: flex-end;
 }
 
-#navItemAbout {
-  display: inline;
+#navItems {
+  display: flex;
+  flex-direction: row;
+  width: 20rem;
 }

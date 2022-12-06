@@ -210,8 +210,6 @@ class App extends React.Component {
       <div id='contents'>
         <Router>
           <Header id="header" />
-          {this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />}
-          {this.props.auth0.isAuthenticated && <Profile />}
           <Routes>
             <Route
               exact path="/"
