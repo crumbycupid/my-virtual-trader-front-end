@@ -6,9 +6,6 @@ import Stack from 'react-bootstrap/Stack';
 import Spinner from 'react-bootstrap/Spinner';
 import './App.css';
 import { withAuth0 } from '@auth0/auth0-react';
-import LoginButton from './Components/LoginButton.js';
-import LogoutButton from './Components/LogoutButton.js';
-import Profile from './Components/Profile.js';
 import Header from './Components/Header.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddAssetDropdown from './Components/AddAssetDropdown';
@@ -210,8 +207,6 @@ class App extends React.Component {
       <div id='contents'>
         <Router>
           <Header id="header" />
-          {this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />}
-          {this.props.auth0.isAuthenticated && <Profile />}
           <Routes>
             <Route
               exact path="/"
