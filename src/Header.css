@@ -1,12 +1,21 @@
 #entireNavBar {
   display: flex;
-  flex-direction: row;
-  padding-bottom: 50px;
+  justify-content: space-between;
   align-items: flex-end;
 }
 
-#navItems {
+#itemHolder{
   display: flex;
   flex-direction: row;
-  width: 20rem;
+  width: 40rem;
+  font-weight: bold;
+  font-size: larger;
+}
+
+#personal{
+  margin-right: 30px;
+}
+
+#title{
+  width:75rem;
 }
