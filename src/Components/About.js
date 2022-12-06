@@ -25,13 +25,6 @@ class AboutProfile extends Component {
                                 alt="Creator PFP"
                                 width="200px"
                             />
-                            <div>
-                                <ul>
-                                    <ul>fef</ul>
-                                    <ul>dfs</ul>
-                                    <ul>sdfcs</ul>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <div className="card3">
